@@ -1,0 +1,31 @@
+
+    nav{
+    display:inline-block;
+}
+.wave{
+    position:relative;
+    left: 41%;
+    top:-15%;
+    width:60%;
+    height:100vh;
+    background: url("~/assets/img/wave.svg") 0 0 / 100% auto no-repeat;
+}
+.logo{
+    display:flex;
+    align-items: center;
+    // gap:1rem;
+    
+    h1{
+        margin-top: 10px;
+        color: #d4afb5;
+    }
+    img{
+        padding: 0px;
+    }
+}
+@media screen and (max-width: 1200px){
+ .wave{
+    display:none;
+ }
+}
+

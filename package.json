@@ -4,18 +4,28 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --hostname '0' --port 3080",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@nuxt/image": "^1.0.0",
+    "@nuxtjs/google-fonts": "^3.0.2",
+    "@nuxtjs/vuetify": "^1.12.3",
+    "eslint": "^8.52.0",
     "nuxt": "^3.8.0",
+    "vite-plugin-vuetify": "^1.0.2",
     "vue": "^3.3.6",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vuetify": "^3.3.23"
   },
   "dependencies": {
+    "@mdi/font": "^7.3.67",
+    "@pinia/nuxt": "^0.5.1",
+    "pinia": "^2.1.7",
+    "sass": "^1.69.3",
     "yarn": "^1.22.19"
   }
 }
