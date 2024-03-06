@@ -1,5 +1,4 @@
 <script>
-import useUserData from './composable/useUserData';
 import { useAuth } from './store/auth';
 import { storeToRefs } from 'pinia';
 
@@ -24,10 +23,10 @@ export default defineComponent({
 </style>
 <template>
   <NuxtLayout>
-    <v-app>
+    <!-- <v-app> -->
 
-      <NuxtPage />
-    </v-app>
+    <NuxtPage />
+    <!-- </v-app> -->
   </NuxtLayout>
 
   <!-- Counter: {{ counter }}

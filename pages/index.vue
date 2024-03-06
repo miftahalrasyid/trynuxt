@@ -1,56 +1,107 @@
-<script setup lang="ts">
-definePageMeta({
-    layout: 'default'
-})
-import type { CSSProperties } from 'vue';
-import useUserData from '~/composable/useUserData';
-import type { IUser } from '~/types';
-const { userData, setUserData } = useUserData();
-const appConfig = useAppConfig()
-console.log("config", appConfig)
-const tester = { value: "admin", width: 320 } as IUser
-console.log("public", userData.value)
-const counter = useState('counter', () => {
 
-    console.log("public", userData.value)
-    return Math.round(Math.random() * 1000)
-})
-const h1click = () => {
-    setUserData(tester);
-    console.log("counter", counter.value++)
-}
-const container: CSSProperties = {
-    marginTop: "6rem",
-    height: "88.4vh",
-    overflowY: "scroll",
-}
+<template>
+    <h1 @click="h1click">testing</h1>
+    <section class="headline">
+        <NuxtImg class="headImg" draggable="false" src="/headImg.png" />
+        <title>Hospital check-in</title>
+        <p class="tagline">Tindakan kita sekarang<br />
+            pastikan bahagia mendatang</p>
+        <p class="jadwal">Jadwalkan konsultasi kesehatan anda sekarang</p>
 
+        <div class="btn">
+            Hubungi kami
+        </div>
+        <!-- <h1 @click="h1click()">index page</h1> -->
+        <!-- Counter: {{ counter }} -->
+    </section>
+    <section class="benefit">
+        <div>
+            <p>Penanganan kesehatan lengkap</p>
+            <p>Dilayani oleh professional dan
+                peralatan memadai untuk
+                solusi kesehatan menyeluruh</p>
+        </div>
+        <div>
+            <div v-for="(item, index) in benefit" :key="index" class="card">
+                <NuxtImg class="headImg" draggable="false" :src="item.src" />
+                <p>{{ item.body }}</p>
+            </div>
+        </div>
 
-const benefit = [
-    {
-        src: '/profesionals.png',
-        body: `Dilayani oleh 
+    </section>
+</template>
+<script>
+// import type { CSSProperties } from 'vue';
+// import type { IUser } from '~/types';
+export default defineComponent({
+    setup() {
+        definePageMeta({
+            layout: 'default'
+        })
+        // const { userData, setUserData } = useUserData();
+        const appConfig = useAppConfig()
+        // console.log("config", appConfig, this)
+        // console.log("public", useUserData())
+        // return {
+        //     userData,
+        //     setUserData
+        // }
+    },
+    layout: 'default',
+    data() {
+        const { userData, setUserData } = useUserData();
+        // const { userData, setuser } = this.useUserData();
+        const self = this;
+        console.log("self ", useUserData())
+        return {
+            user: useUserData(),
+            container: {
+                marginTop: "6rem",
+                height: "88.4vh",
+                overflowY: "scroll",
+            },
+            tester: { value: "admin", width: 320 },
+            benefit: [
+                {
+                    src: '/profesionals.png',
+                    body: `Dilayani oleh 
 banyak tenaga spesialis 
 yang ahli  di berbagai
 bidang kesehatan`},
-    {
-        src: '/laboratory.png',
-        body: `Dilengkapi laboratorium 
+                {
+                    src: '/laboratory.png',
+                    body: `Dilengkapi laboratorium 
 untuk  analisa
 mendalam terhadap 
 suatu penyakit`},
-    {
-        src: '/radiology.png',
-        body: ` Radiologi untuk pencitraan 
+                {
+                    src: '/radiology.png',
+                    body: ` Radiologi untuk pencitraan 
 organ tubuh manusia 
 untuk mencari 
 anomali dalam tubuh`}
-]
-
+            ],
+            counter: useState('counter', () => {
+                console.log("public", userData.value)
+                return Math.round(Math.random() * 1000)
+            })
+        }
+    },
+    methods: {
+    },
+    computed: {
+        h1click() {
+            this.user.setUserData(this.tester);
+            console.log("counter", this.user.userData, this.counter)
+        }
+    }
+})
 </script>
+
 <style lang="scss">
 * {
     font-family: "poppins";
+    font-weight: 500;
 }
 
 .benefit {
@@ -144,33 +195,3 @@ anomali dalam tubuh`}
     }
 }
 </style>
-<template>
-    <section class="headline">
-        <NuxtImg class="headImg" draggable="false" src="/headImg.png" />
-        <title>Hospital check-in</title>
-        <p @click="h1click()" class="tagline">Tindakan kita sekarang<br />
-            pastikan bahagia mendatang</p>
-        <p class="jadwal">Jadwalkan konsultasi kesehatan anda sekarang</p>
-
-        <div class="btn">
-            Hubungi kami
-        </div>
-        <!-- <h1 @click="h1click()">index page</h1> -->
-        <!-- Counter: {{ counter }} -->
-    </section>
-    <section class="benefit">
-        <div>
-            <p>Penanganan kesehatan lengkap</p>
-            <p>Dilayani oleh professional dan
-                peralatan memadai untuk
-                solusi kesehatan menyeluruh</p>
-        </div>
-        <div>
-            <div v-for="(item, index) in benefit" :key="index" class="card">
-                <NuxtImg class="headImg" draggable="false" :src="item.src" />
-                <p>{{ item.body }}</p>
-            </div>
-        </div>
-
-    </section>
-</template>

@@ -1,6 +1,5 @@
 
 <script lang="ts">
-import useUserData from '~/composable/useUserData';
 import type { IUser } from '~/types';
 export default {
     data() {
@@ -34,4 +33,4 @@ export default {
         Expanding the business and healthcare services, doing it all from our hearts.<br />
         Our strong partnership is the foundation on which we build excellent HOSPITAL WITH A HEART.
     </p>
-</template>
+</template>~/composables/useUserData

@@ -38,7 +38,7 @@ export default defineNuxtConfig({
         Lato: [100, 300],
         Caveat: [400],
         poppins: {
-          wght: [100, 200, 300, 400, 600, 700, 800, 900],
+          wght: [100, 200, 300, 500, 600, 700, 800, 900],
           ital: [100]
         },
       }
@@ -50,5 +50,16 @@ export default defineNuxtConfig({
         transformAssetUrls,
       },
     },
+  },
+  nitro: {
+    devProxy: {
+      '/api/': {
+        target: 'http://localhost:3000/',
+        changeOrigin: true
+      }
+    }
+  },
+  pinia: {
+    storesDirs: ['./stores/**'],
   },
 })

@@ -1,13 +1,13 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light justify-content-between position-fixed" :style="{
+    <nav class="navbar navbar-expand-lg navbar-light justify-content-between position-fixed p-0" :style="{
         height: '6rem',
         backgroundColor: '#F0F2F1',
         zIndex: '1', width: '100%',
         top: '0'
     }">
-        <div class="container-fluid" :style="{ marginTop: '2.7rem' }">
+        <div class=" w-100" :style="{ marginTop: '2.7rem' }">
             <div id="up-nav"
-                v-bind:style="{ position: 'absolute', top: 0, left: 0, background: '#222257', width: '100%', height: '2.7rem' }"
+                v-bind:style="({ position: 'absolute', top: 0, left: 0, zIndex: 1, background: '#222257', width: '100%', height: '2.8rem' })"
                 class="container-fluid px-0">
                 <nav class="navbar px-0">
                     <ul class="nav navbar-nav ml-auto align-items-center">
@@ -37,30 +37,110 @@
                     </ul>
                 </nav>
             </div>
-            <div class="logo">
-                <NuxtLink to="/">
-                    <NuxtImg class="navbar-brand" width="200" src="/logo.svg" />
-                </NuxtLink>
-            </div>
-            <div class="collapse navbar-collapse container-fluid">
+            <!-- <v-card class="mt-11"> -->
+
+            <!-- </v-card> -->
+
+            <!-- <div class="collapse navbar-collapse container-fluid">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <NuxtLink class="nav-link" to="/">Home</NuxtLink>
+                        
                     </li>
                     <li class="nav-item">
                         <NuxtLink class="nav-link" to="/about">About</NuxtLink>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </nav>
-    <div class="container-fluid custom_container">
+    <v-layout>
+        <!-- <v-system-bar color="deep-purple darken-3"></v-system-bar> -->
+
+        <!-- <v-app-bar color="white" class="mt-11"> -->
+        <v-app-bar color="white" prominent class="mt-11">
+            <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+
+            <v-toolbar-title>
+                <NuxtLink to="/">
+                    <NuxtImg class="navbar-brand" width="200" src="/logo.svg" />
+                </NuxtLink>
+            </v-toolbar-title>
+
+            <v-spacer></v-spacer>
+
+            <NuxtLink class="nav-link d-inline-block h-100 p-0" to="/">
+                <v-btn variant="text" class="h-100">
+                    Home
+                </v-btn>
+            </NuxtLink>
+            <NuxtLink class="nav-link d-inline-block h-100 p-0" to="/about">
+                <v-btn variant="text" class="h-100">
+                    About
+                </v-btn>
+            </NuxtLink>
+            <!-- <v-btn variant="text" icon="mdi-dots-vertical"></v-btn> -->
+        </v-app-bar>
+
+        <v-navigation-drawer v-model="drawer" location="bottom" temporary>
+            <v-list :items="items"></v-list>
+        </v-navigation-drawer>
+
+        <v-main :style="({ height: '100vh' })">
+            <!-- <v-card-text>
+                The navigation drawer will appear from the bottom on smaller size screens. -->
+            <div class="container-fluid custom_container">
+                <slot />
+            </div>
+            <!-- </v-card-text> -->
+        </v-main>
+    </v-layout>
+    <!-- <div class="container-fluid custom_container">
         <slot />
-    </div>
+    </div> -->
 </template>
+<script>
+export default {
+
+    data() {
+        return {
+            sidebar: false,
+            menuItems: [
+                { title: 'Home', path: '/home', icon: 'home' },
+                { title: 'Sign Up', path: '/signup', icon: 'face' },
+                { title: 'Sign In', path: '/signin', icon: 'lock_open' }
+            ],
+            drawer: false,
+            group: null,
+            items: [
+                {
+                    title: 'Foo',
+                    value: 'foo',
+                },
+                {
+                    title: 'Bar',
+                    value: 'bar',
+                },
+                {
+                    title: 'Fizz',
+                    value: 'fizz',
+                },
+                {
+                    title: 'Buzz',
+                    value: 'buzz',
+                },
+            ],
+        }
+    },
+    watch: {
+        group() {
+            this.drawer = false
+        },
+    },
+}
+</script>
 <style lang="scss">
 .custom_container {
-    margin-top: 6rem;
+    margin-top: 3rem;
 }
 
 .sign-in {
