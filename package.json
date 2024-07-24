@@ -13,6 +13,7 @@
     "@nuxt/devtools": "latest",
     "@nuxt/image": "^1.0.0",
     "@nuxtjs/google-fonts": "^3.0.2",
+    "@nuxtjs/i18n": "^8.0.0",
     "@nuxtjs/vuetify": "^1.12.3",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
@@ -24,10 +25,21 @@
     "vuetify": "^3.3.23"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/vue-fontawesome": "^3.0.6",
     "@mdi/font": "^7.3.67",
+    "@nuxt/devalue": "^2.0.2",
     "@pinia/nuxt": "^0.5.1",
+    "node-fetch": "^3.3.2",
+    "nuxt-vue3-google-signin": "^0.0.11",
     "pinia": "^2.1.7",
     "sass": "^1.69.3",
+    "string-width": "^4.2.3",
     "yarn": "^1.22.19"
+  },
+  "resolutions": {
+    "string-width": "^4.2.3"
   }
 }

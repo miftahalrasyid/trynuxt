@@ -12,6 +12,10 @@ export default defineNuxtConfig({
       enabled: true
     }
   },
+  css: ['@fortawesome/fontawesome-svg-core/styles.css'],
+  plugins: [
+    '@/plugins/fontawesome.ts'
+  ],
   // css: ['~/assets/scss/main.scss'],
 
   routeRules: {
@@ -43,7 +47,18 @@ export default defineNuxtConfig({
         },
       }
     }],
+    '@nuxtjs/i18n',
+    'nuxt-vue3-google-signin'
   ],
+  googleSignIn: {
+    clientId: '742210396581-o9q56vmt23jfj94qqikrg293pbvotggp.apps.googleusercontent.com',
+  },
+  i18n: {
+    vueI18n: './i18n.config.ts', // if you are using custom path, default
+    detectBrowserLanguage: {
+      useCookie: true,
+    }
+  },
   vite: {
     vue: {
       template: {

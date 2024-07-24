@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { useAuth } from './auth'
+import { useApp } from './app'
 
 // export default {
 //     methods: {
@@ -24,6 +25,7 @@ const useMainStore = defineStore('main', {
 export const mainStore = () => {
     return {
         auth: useAuth(),
+        app: useApp(),
         store: useMainStore()
     }
 }

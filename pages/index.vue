@@ -1,35 +1,33 @@
-
 <template>
-    <h1 @click="h1click">testing</h1>
     <section class="headline">
         <NuxtImg class="headImg" draggable="false" src="/headImg.png" />
         <title>Hospital check-in</title>
-        <p class="tagline">Tindakan kita sekarang<br />
-            pastikan bahagia mendatang</p>
-        <p class="jadwal">Jadwalkan konsultasi kesehatan anda sekarang</p>
+        <p class="tagline">{{ $t("home.headline") }}<br />
+            {{ $t("home.headline1") }}</p>
+        <p class="jadwal">{{ $t("home.sub") }}</p>
 
         <div class="btn">
-            Hubungi kami
+            {{ $t("home.contact") }}
         </div>
         <!-- <h1 @click="h1click()">index page</h1> -->
         <!-- Counter: {{ counter }} -->
     </section>
+
     <section class="benefit">
         <div>
-            <p>Penanganan kesehatan lengkap</p>
-            <p>Dilayani oleh professional dan
-                peralatan memadai untuk
-                solusi kesehatan menyeluruh</p>
+            <p>{{ $t("home.benefit.title") }}</p>
+            <p>{{ $t("home.benefit.body") }}</p>
         </div>
         <div>
             <div v-for="(item, index) in benefit" :key="index" class="card">
                 <NuxtImg class="headImg" draggable="false" :src="item.src" />
-                <p>{{ item.body }}</p>
+                <p>{{ $t(item.body) }}</p>
             </div>
         </div>
 
     </section>
 </template>
+
 <script>
 // import type { CSSProperties } from 'vue';
 // import type { IUser } from '~/types';
@@ -64,22 +62,16 @@ export default defineComponent({
             benefit: [
                 {
                     src: '/profesionals.png',
-                    body: `Dilayani oleh 
-banyak tenaga spesialis 
-yang ahli  di berbagai
-bidang kesehatan`},
+                    body: "home.benefit.poin1"
+                },
                 {
                     src: '/laboratory.png',
-                    body: `Dilengkapi laboratorium 
-untuk  analisa
-mendalam terhadap 
-suatu penyakit`},
+                    body: "home.benefit.poin2"
+                },
                 {
                     src: '/radiology.png',
-                    body: ` Radiologi untuk pencitraan 
-organ tubuh manusia 
-untuk mencari 
-anomali dalam tubuh`}
+                    body: "home.benefit.poin3"
+                }
             ],
             counter: useState('counter', () => {
                 console.log("public", userData.value)
@@ -87,22 +79,30 @@ anomali dalam tubuh`}
             })
         }
     },
+    watch: {
+
+    },
     methods: {
     },
     computed: {
-        h1click() {
-            this.user.setUserData(this.tester);
-            console.log("counter", this.user.userData, this.counter)
+        getBenefit() {
+            return this.benefit
         }
     }
 })
 </script>
 
 <style lang="scss">
-* {
+p,
+button {
     font-family: "poppins";
     font-weight: 500;
 }
+
+// * {
+//     font-family: "poppins";
+//     font-weight: 500;
+// }
 
 .benefit {
     display: flex;

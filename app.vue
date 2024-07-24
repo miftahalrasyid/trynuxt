@@ -15,12 +15,11 @@ export default defineComponent({
   }
 })
 </script>
-<style >
-@import "https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css";
+<style>
+@import "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css";
 </style>
 <style lang="scss">
-// @use "assets/scss/main.scss";
-</style>
+// @use "assets/scss/main.scss";</style>
 <template>
   <NuxtLayout>
     <!-- <v-app> -->
@@ -29,15 +28,4 @@ export default defineComponent({
     <!-- </v-app> -->
   </NuxtLayout>
 
-  <!-- Counter: {{ counter }}
-      <button @click="counter++">
-        +
-      </button>
-      <button @click="counter--">
-        -
-      </button> -->
-
-  <!-- <div>
-    <NuxtWelcome />
-  </div> -->
 </template>
